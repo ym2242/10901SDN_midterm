@@ -292,7 +292,7 @@ CRC錯誤數量```rx_crc_err```、碰撞數量```collisions```
    }
 }
 ```
-## 從 host 1 向 host 2 執行 ping 的指令
+## 從 host 1 向 host 2 傳送一個封包觀察結果
 
 
 ```shell
