@@ -222,6 +222,9 @@ packet in 0000000000000001 00:00:00:00:00:01 33:33:00:00:00:02 1
 ```
 
 ## 接收Switch中連接埠號儲存接收端的資訊
+其中包含封包數量```rx_packet```、位元數量```rx_bytes```、丟棄封包數量```rx_dropped```、
+錯誤數量```rx_errors```、frame錯誤數量```rx_frame_err```、overrrun數量```rx_over_err```、
+CRC錯誤數量```rx_crc_err```、碰撞數量```collisions```
 ```shell
 {
    "OFPPortStatsReply": {
@@ -296,7 +299,9 @@ packet in 0000000000000001 00:00:00:00:00:01 33:33:00:00:00:02 1
 h1 ping h2 -c1
 ```
 
-可以發現flowentry的回傳資訊開始有了變化
+可以發現flowentry的回傳資訊開始有了變化，
+```"match"```中多了h1傳送至h2的封包資訊，
+以及h2回傳給h1的封包資訊。
 
 ```shell
 {
