@@ -156,6 +156,141 @@ def _port_stats_reply_handler(self, ev):
 $ ryu-manager --verbose ./SimpleMonitor.py
 ```
 
+##執行結果
+'''shell
+lab@ubuntu:~$ ryu-manager Desktop/SimpleMonitor.py
+loading app Desktop/SimpleMonitor.py
+loading app ryu.controller.ofp_handler
+instantiating app Desktop/SimpleMonitor.py of SimpleMonitor
+instantiating app ryu.controller.ofp_handler of OFPHandler
+packet in 0000000000000001 00:00:00:00:00:02 33:33:00:00:00:02 2
+packet in 0000000000000001 00:00:00:00:00:01 33:33:00:00:00:02 1
+packet in 0000000000000001 00:00:00:00:00:02 33:33:00:00:00:02 2
+packet in 0000000000000001 00:00:00:00:00:01 33:33:00:00:00:02 1
+'''
+
+##取得Switch回傳的規則資訊(Flowstats)
+'''shell
+{
+   "OFPFlowStatsReply": {
+      "body": [
+         {
+            "OFPFlowStats": {
+               "byte_count": 280, 
+               "cookie": 0, 
+               "duration_nsec": 997000000, 
+               "duration_sec": 14, 
+               "flags": 0, 
+               "hard_timeout": 0, 
+               "idle_timeout": 0, 
+               "instructions": [
+                  {
+                     "OFPInstructionActions": {
+                        "actions": [
+                           {
+                              "OFPActionOutput": {
+                                 "len": 16, 
+                                 "max_len": 65535, 
+                                 "port": 4294967293, 
+                                 "type": 0
+                              }
+                           }
+                        ], 
+                        "len": 24, 
+                        "type": 4
+                     }
+                  }
+               ], 
+               "length": 80, 
+               "match": {
+                  "OFPMatch": {
+                     "length": 4, 
+                     "oxm_fields": [], 
+                     "type": 1
+                  }
+               }, 
+               "packet_count": 4, 
+               "priority": 0, 
+               "table_id": 0
+            }
+         }
+      ], 
+      "flags": 0, 
+      "type": 1
+   }
+}
+'''
+
+##接收Switch中連接埠號儲存接收端的資訊
+'''shell
+{
+   "OFPPortStatsReply": {
+      "body": [
+         {
+            "OFPPortStats": {
+               "collisions": 0, 
+               "duration_nsec": 713000000, 
+               "duration_sec": 18, 
+               "port_no": 4294967294, 
+               "rx_bytes": 0, 
+               "rx_crc_err": 0, 
+               "rx_dropped": 4, 
+               "rx_errors": 0, 
+               "rx_frame_err": 0, 
+               "rx_over_err": 0, 
+               "rx_packets": 0, 
+               "tx_bytes": 0, 
+               "tx_dropped": 0, 
+               "tx_errors": 0, 
+               "tx_packets": 0
+            }
+         }, 
+         {
+            "OFPPortStats": {
+               "collisions": 0, 
+               "duration_nsec": 723000000, 
+               "duration_sec": 18, 
+               "port_no": 1, 
+               "rx_bytes": 696, 
+               "rx_crc_err": 0, 
+               "rx_dropped": 0, 
+               "rx_errors": 0, 
+               "rx_frame_err": 0, 
+               "rx_over_err": 0, 
+               "rx_packets": 8, 
+               "tx_bytes": 3247, 
+               "tx_dropped": 2, 
+               "tx_errors": 0, 
+               "tx_packets": 23
+            }
+         }, 
+         {
+            "OFPPortStats": {
+               "collisions": 0, 
+               "duration_nsec": 723000000, 
+               "duration_sec": 18, 
+               "port_no": 2, 
+               "rx_bytes": 872, 
+               "rx_crc_err": 0, 
+               "rx_dropped": 0, 
+               "rx_errors": 0, 
+               "rx_frame_err": 0, 
+               "rx_over_err": 0, 
+               "rx_packets": 10, 
+               "tx_bytes": 3337, 
+               "tx_dropped": 0, 
+               "tx_errors": 0, 
+               "tx_packets": 24
+            }
+         }
+      ], 
+      "flags": 0, 
+      "type": 4
+   }
+}
+
+'''
+
 ## 參考
 [(GitHub)TrafficMonitor](https://github.com/YanHaoChen/Learning-SDN/tree/master/Controller/Ryu/TrafficMonitor)
 
