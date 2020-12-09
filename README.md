@@ -169,7 +169,7 @@ packet in 0000000000000001 00:00:00:00:00:02 33:33:00:00:00:02 2
 packet in 0000000000000001 00:00:00:00:00:01 33:33:00:00:00:02 1
 ```
 
-# 取得Switch回傳的規則資訊(Flowstats)
+## 取得Switch回傳的規則資訊(Flowstats)
 ```shell
 {
    "OFPFlowStatsReply": {
@@ -221,7 +221,7 @@ packet in 0000000000000001 00:00:00:00:00:01 33:33:00:00:00:02 1
 }
 ```
 
-# 接收Switch中連接埠號儲存接收端的資訊
+## 接收Switch中連接埠號儲存接收端的資訊
 ```shell
 {
    "OFPPortStatsReply": {
@@ -289,9 +289,15 @@ packet in 0000000000000001 00:00:00:00:00:01 33:33:00:00:00:02 1
    }
 }
 ```
-#從 host 1 向 host 2 執行 ping 的指令
+## 從 host 1 向 host 2 執行 ping 的指令
+
+
 ```shell
 h1 ping h2 -c1
+```
+
+可以發現flowentry的回傳資訊開始有了變化
+
 ```shell
 {
    "OFPFlowStatsReply": {
@@ -467,7 +473,7 @@ h1 ping h2 -c1
 }
 ```
 
-可以發現flowentry的回傳資訊開始有了變化
+
 
 
 ## 參考
