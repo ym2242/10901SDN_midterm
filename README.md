@@ -156,7 +156,7 @@ def _port_stats_reply_handler(self, ev):
 $ ryu-manager --verbose ./SimpleMonitor.py
 ```
 
-##執行結果
+## 執行結果
 ```shell
 lab@ubuntu:~$ ryu-manager Desktop/SimpleMonitor.py
 loading app Desktop/SimpleMonitor.py
@@ -169,7 +169,7 @@ packet in 0000000000000001 00:00:00:00:00:02 33:33:00:00:00:02 2
 packet in 0000000000000001 00:00:00:00:00:01 33:33:00:00:00:02 1
 ```
 
-##取得Switch回傳的規則資訊(Flowstats)
+# 取得Switch回傳的規則資訊(Flowstats)
 ```shell
 {
    "OFPFlowStatsReply": {
@@ -221,7 +221,7 @@ packet in 0000000000000001 00:00:00:00:00:01 33:33:00:00:00:02 1
 }
 ```
 
-##接收Switch中連接埠號儲存接收端的資訊
+# 接收Switch中連接埠號儲存接收端的資訊
 ```shell
 {
    "OFPPortStatsReply": {
@@ -288,8 +288,187 @@ packet in 0000000000000001 00:00:00:00:00:01 33:33:00:00:00:02 1
       "type": 4
    }
 }
-
 ```
+#從 host 1 向 host 2 執行 ping 的指令
+```shell
+h1 ping h2 -c1
+```shell
+{
+   "OFPFlowStatsReply": {
+      "body": [
+         {
+            "OFPFlowStats": {
+               "byte_count": 182, 
+               "cookie": 0, 
+               "duration_nsec": 234000000, 
+               "duration_sec": 12, 
+               "flags": 0, 
+               "hard_timeout": 0, 
+               "idle_timeout": 0, 
+               "instructions": [
+                  {
+                     "OFPInstructionActions": {
+                        "actions": [
+                           {
+                              "OFPActionOutput": {
+                                 "len": 16, 
+                                 "max_len": 65509, 
+                                 "port": 1, 
+                                 "type": 0
+                              }
+                           }
+                        ], 
+                        "len": 24, 
+                        "type": 4
+                     }
+                  }
+               ], 
+               "length": 104, 
+               "match": {
+                  "OFPMatch": {
+                     "length": 32, 
+                     "oxm_fields": [
+                        {
+                           "OXMTlv": {
+                              "field": "in_port", 
+                              "mask": null, 
+                              "value": 2
+                           }
+                        }, 
+                        {
+                           "OXMTlv": {
+                              "field": "eth_src", 
+                              "mask": null, 
+                              "value": "00:00:00:00:00:02"
+                           }
+                        }, 
+                        {
+                           "OXMTlv": {
+                              "field": "eth_dst", 
+                              "mask": null, 
+                              "value": "00:00:00:00:00:01"
+                           }
+                        }
+                     ], 
+                     "type": 1
+                  }
+               }, 
+               "packet_count": 3, 
+               "priority": 1, 
+               "table_id": 0
+            }
+         }, 
+         {
+            "OFPFlowStats": {
+               "byte_count": 140, 
+               "cookie": 0, 
+               "duration_nsec": 232000000, 
+               "duration_sec": 12, 
+               "flags": 0, 
+               "hard_timeout": 0, 
+               "idle_timeout": 0, 
+               "instructions": [
+                  {
+                     "OFPInstructionActions": {
+                        "actions": [
+                           {
+                              "OFPActionOutput": {
+                                 "len": 16, 
+                                 "max_len": 65509, 
+                                 "port": 2, 
+                                 "type": 0
+                              }
+                           }
+                        ], 
+                        "len": 24, 
+                        "type": 4
+                     }
+                  }
+               ], 
+               "length": 104, 
+               "match": {
+                  "OFPMatch": {
+                     "length": 32, 
+                     "oxm_fields": [
+                        {
+                           "OXMTlv": {
+                              "field": "in_port", 
+                              "mask": null, 
+                              "value": 1
+                           }
+                        }, 
+                        {
+                           "OXMTlv": {
+                              "field": "eth_src", 
+                              "mask": null, 
+                              "value": "00:00:00:00:00:01"
+                           }
+                        }, 
+                        {
+                           "OXMTlv": {
+                              "field": "eth_dst", 
+                              "mask": null, 
+                              "value": "00:00:00:00:00:02"
+                           }
+                        }
+                     ], 
+                     "type": 1
+                  }
+               }, 
+               "packet_count": 2, 
+               "priority": 1, 
+               "table_id": 0
+            }
+         }, 
+         {
+            "OFPFlowStats": {
+               "byte_count": 602, 
+               "cookie": 0, 
+               "duration_nsec": 957000000, 
+               "duration_sec": 39, 
+               "flags": 0, 
+               "hard_timeout": 0, 
+               "idle_timeout": 0, 
+               "instructions": [
+                  {
+                     "OFPInstructionActions": {
+                        "actions": [
+                           {
+                              "OFPActionOutput": {
+                                 "len": 16, 
+                                 "max_len": 65535, 
+                                 "port": 4294967293, 
+                                 "type": 0
+                              }
+                           }
+                        ], 
+                        "len": 24, 
+                        "type": 4
+                     }
+                  }
+               ], 
+               "length": 80, 
+               "match": {
+                  "OFPMatch": {
+                     "length": 4, 
+                     "oxm_fields": [], 
+                     "type": 1
+                  }
+               }, 
+               "packet_count": 9, 
+               "priority": 0, 
+               "table_id": 0
+            }
+         }
+      ], 
+      "flags": 0, 
+      "type": 1
+   }
+}
+```
+
+可以發現flowentry的回傳資訊開始有了變化
+
 
 ## 參考
 [(GitHub)TrafficMonitor](https://github.com/YanHaoChen/Learning-SDN/tree/master/Controller/Ryu/TrafficMonitor)
